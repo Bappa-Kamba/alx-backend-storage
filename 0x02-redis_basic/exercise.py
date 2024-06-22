@@ -3,7 +3,7 @@
 import redis
 import uuid
 from typing import Union, Callable
-from functools import wraps
+import functools
 
 
 def count_calls(func: Callable) -> Callable:
@@ -13,7 +13,7 @@ def count_calls(func: Callable) -> Callable:
     """
     key = func.__qualname__
 
-    @wraps(func)
+    @functools.wraps(func)
     def wrapper(self, *args, **kwargs):
         self._redis.incr(key)
         return func(self, *args, **kwargs)
