@@ -47,7 +47,7 @@ class Cache:
     @call_history
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """
-        Stores the `data` in Redis 
+        Stores the `data` in Redis
 
         Args:
             data (str): Data to store
