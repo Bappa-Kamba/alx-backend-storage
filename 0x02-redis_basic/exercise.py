@@ -6,17 +6,17 @@ from typing import Union, Callable
 import functools
 
 
-def count_calls(func: Callable) -> Callable:
+def count_calls(method: Callable) -> Callable:
     """
     Decorator that increments a key in Redis every
     time the decorated function is called
     """
-    key = func.__qualname__
+    key = method.__qualname__
 
-    @functools.wraps(func)
+    @functools.wraps(method)
     def wrapper(self, *args, **kwargs):
         self._redis.incr(key)
-        return func(self, *args, **kwargs)
+        return method(self, *args, **kwargs)
     return wrapper
 
 
