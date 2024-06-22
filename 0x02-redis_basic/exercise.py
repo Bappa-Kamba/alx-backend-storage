@@ -46,7 +46,7 @@ class Cache:
     @count_calls
     @call_history
     def store(self, data: Union[str, bytes, int, float]) -> str:
-        """ 
+        """
         Stores the `data` in Redis 
 
         Args:
@@ -61,7 +61,7 @@ class Cache:
 
     def get(self, key: str, fn: Union[None, int, float] = None) -> \
             Union[str, bytes, int, float]:
-        """ 
+        """
         Retrieves the data stored in Redis
 
         Args:
@@ -77,7 +77,7 @@ class Cache:
         return data
 
     def get_str(self, key: str) -> str:
-        """ 
+        """
         Retrieves the data stored in Redis as string
 
         Args:
@@ -89,7 +89,7 @@ class Cache:
         return self.get(key, str)
 
     def get_int(self, key: str) -> int:
-        """ 
+        """
         Retrieves the data stored in Redis as integer
 
         Args:
@@ -102,7 +102,7 @@ class Cache:
 
 
 def replay(method: Callable) -> None:
-    """ 
+    """
     Displays the history of calls of a function
     """
     redis_instance = redis.Redis()
