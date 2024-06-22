@@ -6,7 +6,7 @@ from typing import Union, Callable
 from functools import wraps
 
 
-def count_call(func: Callable) -> Callable:
+def count_calls(func: Callable) -> Callable:
     """
     Decorator that increments a key in Redis every
     time the decorated function is called
@@ -28,7 +28,7 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
 
-    @count_call
+    @count_calls
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """ 
         Stores the `data` in Redis 
