@@ -59,7 +59,8 @@ class Cache:
         self._redis.set(key, data)
         return key
 
-    def get(self, key: str, fn: Union[None, int, float] = None) -> Union[str, bytes, int, float]:
+    def get(self, key: str, fn: Union[None, int, float] = None) -> \
+            Union[str, bytes, int, float]:
         """ 
         Retrieves the data stored in Redis
 
@@ -110,4 +111,5 @@ def replay(method: Callable) -> None:
     outputs = redis_instance.lrange(method_name + ":outputs", 0, -1)
     print(f"{method_name} was called {len(inputs)} times:")
     for input_data, output_data in zip(inputs, outputs):
-        print(f"{method_name}(*{input_data.decode('utf-8')}) -> {output_data.decode('utf-8')}")
+        print(f"{method_name}(*{input_data.decode('utf-8')}) -> \
+{output_data.decode('utf-8')}")
